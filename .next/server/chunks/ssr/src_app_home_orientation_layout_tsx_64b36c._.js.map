@@ -2,6 +2,6 @@
   "version": 3,
   "sources": [],
   "sections": [
-    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///home/melone/Training/Dev/EduNext/src/app/home/orientation/layout.tsx"],"sourcesContent":["export default function OrientationLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return (\n    <div>\n      <h1 className=\"text-xl font-semibold mb-3\">Orientation</h1>\n      <p className=\"font-light\">\n        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex aliquam\n        quibusdam, ipsum in maxime eius et eveniet atque harum facilis nemo.\n        Tenetur officiis adipisci earum ipsum ratione ducimus, nihil corrupti.\n      </p>\n      <div>{children}</div>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;AAAe,SAAS,kBAAkB,EACxC,QAAQ,EAGR;IACA,qBACE,6WAAC;;0BACC,6WAAC;gBAAG,WAAU;0BAA6B;;;;;;0BAC3C,6WAAC;gBAAE,WAAU;0BAAa;;;;;;0BAK1B,6WAAC;0BAAK;;;;;;;;;;;;AAGZ"}},
-    {"offset": {"line": 45, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///home/melone/Training/Dev/EduNext/src/app/home/orientation/layout.tsx"],"sourcesContent":["export default function OrientationLayout({\n  children,\n}: Readonly<{\n  children: React.ReactNode;\n}>) {\n  return <div>{children}</div>;\n}\n"],"names":[],"mappings":";;;;;AAAe,SAAS,kBAAkB,EACxC,QAAQ,EAGR;IACA,qBAAO,6WAAC;kBAAK;;;;;;AACf"}},
+    {"offset": {"line": 21, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
 }
