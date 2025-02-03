@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file:///home/melone/Training/Dev/EduNext/src/app/home/orientation/page.tsx"],"sourcesContent":["import React from \"react\";\n\nexport default function page() {\n  return <div>page</div>;\n}\n"],"names":[],"mappings":";;;;;AAEe,SAAS;IACtB,qBAAO,6WAAC;kBAAI;;;;;;AACd"}},
+    {"offset": {"line": 21, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 32, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":""}},
+    {"offset": {"line": 32, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
