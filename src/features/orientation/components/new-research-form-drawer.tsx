@@ -102,9 +102,12 @@ export default function NewResearchFormDrawer({ open, onClose }: DrawerProps) {
   return (
     <div>
       <Drawer open={open} onClose={onClose}>
-        <DrawerContent className="flex-shrink-0">
+        <DrawerContent className="flex flex-col h-[90vh]">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="mx-6">
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="flex flex-col h-full"
+            >
               <DrawerHeader>
                 <DrawerTitle>Nouvelle recherche</DrawerTitle>
                 <DrawerDescription>
@@ -113,17 +116,17 @@ export default function NewResearchFormDrawer({ open, onClose }: DrawerProps) {
                 </DrawerDescription>
               </DrawerHeader>
 
-              <div className="flex-1 overflow-y-auto">
+              <div className="flex-1 overflow-y-auto px-6">
                 <div className="flex-grow">
+                  {/* Contenu du premier Drawer */}
                   <div className="flex items-center justify-between my-2">
-                    <div className=" py-2 px-4 bg-gray-400 rounded-xl w-fit mb-4">
+                    <div className="py-2 px-4 bg-gray-400 rounded-xl w-fit mb-4">
                       <p className="font-light">
                         Informations personnelles et scolaires
                       </p>
                     </div>
                   </div>
 
-                  {/* DRAWER 1 */}
                   <div className="space-y-6 p-5">
                     <div className="flex gap-4">
                       <FormField
@@ -505,292 +508,224 @@ export default function NewResearchFormDrawer({ open, onClose }: DrawerProps) {
               </div>
 
               {isSecondDrawerOpen && (
-                <div>
-                  <DrawerHeader>
-                    <DrawerTitle>Notes et résultats académiques</DrawerTitle>
-                    <DrawerDescription>
-                      Veuillez remplir vos notes et résultats académiques.
-                    </DrawerDescription>
-                  </DrawerHeader>
+                <Drawer
+                  open={isSecondDrawerOpen}
+                  onClose={() => setSecondDrawerOpen(false)}
+                >
+                  <DrawerContent className="flex flex-col h-[90vh]">
+                    <DrawerHeader>
+                      <DrawerTitle>Notes et résultats académiques</DrawerTitle>
+                      <DrawerDescription>
+                        Veuillez remplir vos notes et résultats académiques.
+                      </DrawerDescription>
+                    </DrawerHeader>
 
-                  <div className="flex flex-col h-full">
-                    <div className="flex-grow">
-                      <div className="mx-6 my-4 flex gap-4">
-                        <FormField
-                          control={form.control}
-                          name="Note_Maths"
-                          render={({ field }) => (
-                            <FormItem className="flex-1">
-                              <FormLabel>Note en Mathématiques</FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="Note en Mathématiques"
-                                  className="w-full"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+                    <div className="flex-1 overflow-y-auto px-6">
+                      <div className="flex-grow">
+                        {/* Contenu du deuxième Drawer */}
+                        <div className="mx-6 my-4 flex gap-4">
+                          <FormField
+                            control={form.control}
+                            name="Note_Maths"
+                            render={({ field }) => (
+                              <FormItem className="flex-1">
+                                <FormLabel>Note en Mathématiques</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    {...field}
+                                    placeholder="Note en Mathématiques"
+                                    className="w-full"
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
 
-                        <FormField
-                          control={form.control}
-                          name="Note_Physique_Chimie"
-                          render={({ field }) => (
-                            <FormItem className="flex-1">
-                              <FormLabel>Note en Physique-Chimie</FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="Note en Physique-Chimie"
-                                  className="w-full"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+                          <FormField
+                            control={form.control}
+                            name="Note_Physique_Chimie"
+                            render={({ field }) => (
+                              <FormItem className="flex-1">
+                                <FormLabel>Note en Physique-Chimie</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    {...field}
+                                    placeholder="Note en Physique-Chimie"
+                                    className="w-full"
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
 
-                        <FormField
-                          control={form.control}
-                          name="Note_SVT"
-                          render={({ field }) => (
-                            <FormItem className="flex-1">
-                              <FormLabel>Note en SVT</FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="Note en SVT"
-                                  className="w-full"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+                          <FormField
+                            control={form.control}
+                            name="Note_SVT"
+                            render={({ field }) => (
+                              <FormItem className="flex-1">
+                                <FormLabel>Note en SVT</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    {...field}
+                                    placeholder="Note en SVT"
+                                    className="w-full"
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
 
-                        <FormField
-                          control={form.control}
-                          name="Note_Francais_Ecrit"
-                          render={({ field }) => (
-                            <FormItem className="flex-1">
-                              <FormLabel>Note en Français (Écrit)</FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="Note en Français (Écrit)"
-                                  className="w-full"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
+                          <FormField
+                            control={form.control}
+                            name="Note_Francais_Ecrit"
+                            render={({ field }) => (
+                              <FormItem className="flex-1">
+                                <FormLabel>Note en Français (Écrit)</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    {...field}
+                                    placeholder="Note en Français (Écrit)"
+                                    className="w-full"
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                        <div className="mx-6 my-4 flex gap-4">
+                          <FormField
+                            control={form.control}
+                            name="Note_Francais_Oral"
+                            render={({ field }) => (
+                              <FormItem className="flex-1">
+                                <FormLabel>Note en Français (Oral)</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    {...field}
+                                    placeholder="Note en Français (Oral)"
+                                    className="w-full"
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
 
-                      <div className="mx-6 my-4 flex gap-4">
-                        <FormField
-                          control={form.control}
-                          name="Note_Francais_Oral"
-                          render={({ field }) => (
-                            <FormItem className="flex-1">
-                              <FormLabel>Note en Français (Oral)</FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="Note en Français (Oral)"
-                                  className="w-full"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+                          <FormField
+                            control={form.control}
+                            name="Note_Anglais_Ecrit"
+                            render={({ field }) => (
+                              <FormItem className="flex-1">
+                                <FormLabel>Note en Anglais (Écrit)</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    {...field}
+                                    placeholder="Note en Anglais (Écrit)"
+                                    className="w-full"
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
 
-                        <FormField
-                          control={form.control}
-                          name="Note_Anglais_Ecrit"
-                          render={({ field }) => (
-                            <FormItem className="flex-1">
-                              <FormLabel>Note en Anglais (Écrit)</FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="Note en Anglais (Écrit)"
-                                  className="w-full"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+                          <FormField
+                            control={form.control}
+                            name="Note_Anglais_Oral"
+                            render={({ field }) => (
+                              <FormItem className="flex-1">
+                                <FormLabel>Note en Anglais (Oral)</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    {...field}
+                                    placeholder="Note en Anglais (Oral)"
+                                    className="w-full"
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
 
-                        <FormField
-                          control={form.control}
-                          name="Note_Anglais_Oral"
-                          render={({ field }) => (
-                            <FormItem className="flex-1">
-                              <FormLabel>Note en Anglais (Oral)</FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="Note en Anglais (Oral)"
-                                  className="w-full"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+                          <FormField
+                            control={form.control}
+                            name="Note_Facultative_1"
+                            render={({ field }) => (
+                              <FormItem className="flex-1">
+                                <FormLabel>Note en Espagnol (Écrit)</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    {...field}
+                                    placeholder="Note en Espagnol (Écrit)"
+                                    className="w-full"
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                        <div className="mx-6 my-4 flex gap-4">
+                          <FormField
+                            control={form.control}
+                            name="Personnalite"
+                            render={({ field }) => (
+                              <FormItem className="flex-1">
+                                <FormLabel>Personnalité</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    {...field}
+                                    placeholder="Décrivez votre personnalité"
+                                    className="w-full"
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
 
-                        <FormField
-                          control={form.control}
-                          name="Note_Facultative_1"
-                          render={({ field }) => (
-                            <FormItem className="flex-1">
-                              <FormLabel>Note en Espagnol (Écrit)</FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="Note en Espagnol (Écrit)"
-                                  className="w-full"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-
-                      <div className="mx-6 my-4 flex gap-4">
-                        <FormField
-                          control={form.control}
-                          name="Note_Espagnol_Oral"
-                          render={({ field }) => (
-                            <FormItem className="flex-1">
-                              <FormLabel>Note en Espagnol (Oral)</FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="Note en Espagnol (Oral)"
-                                  className="w-full"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={form.control}
-                          name="Note_Histoire_Geo"
-                          render={({ field }) => (
-                            <FormItem className="flex-1">
-                              <FormLabel>Note en Histoire-Géographie</FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="Note en Histoire-Géographie"
-                                  className="w-full"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={form.control}
-                          name="Note_Philo"
-                          render={({ field }) => (
-                            <FormItem className="flex-1">
-                              <FormLabel>Note en Philosophie</FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="Note en Philosophie"
-                                  className="w-full"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={form.control}
-                          name="Note_EPS"
-                          render={({ field }) => (
-                            <FormItem className="flex-1">
-                              <FormLabel>Note en EPS</FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="Note en EPS"
-                                  className="w-full"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-
-                      <div className="mx-6 border py-2 px-4 bg-gray-400 rounded-xl w-fit my-4">
-                        <p className="font-light">
-                          Personnalité et motivations
-                        </p>
-                      </div>
-
-                      <div className="mx-6 my-4 flex gap-4">
-                        <FormField
-                          control={form.control}
-                          name="Personnalite"
-                          render={({ field }) => (
-                            <FormItem className="flex-1">
-                              <FormLabel>Personnalité</FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="Décrivez votre personnalité"
-                                  className="w-full"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={form.control}
-                          name="Religion"
-                          render={({ field }) => (
-                            <FormItem className="flex-1">
-                              <FormLabel>Religion</FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="Entrez votre religion"
-                                  className="w-full"
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+                          <FormField
+                            control={form.control}
+                            name="Religion"
+                            render={({ field }) => (
+                              <FormItem className="flex-1">
+                                <FormLabel>Religion</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    {...field}
+                                    placeholder="Entrez votre religion"
+                                    className="w-full"
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <DrawerFooter className="flex-shrink-0 flex flex-row justify-end px-6 my-4 border-t mx-24">
-                    <DrawerClose asChild>
-                      <Button type="button" variant="outline">
-                        Annuler
+
+                    <DrawerFooter className="flex-shrink-0 flex flex-row justify-end px-6 my-4 border-t mx-24">
+                      <DrawerClose asChild>
+                        <Button type="button" variant="outline">
+                          Annuler
+                        </Button>
+                      </DrawerClose>
+                      <Button
+                        onClick={() => {
+                          onSubmit(form.getValues());
+                        }}
+                        type="submit"
+                      >
+                        Soumettre
                       </Button>
-                    </DrawerClose>
-                    <Button type="submit">Soumettre</Button>
-                  </DrawerFooter>
-                </div>
+                    </DrawerFooter>
+                  </DrawerContent>
+                </Drawer>
               )}
             </form>
           </Form>
