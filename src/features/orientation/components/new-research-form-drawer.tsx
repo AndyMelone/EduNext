@@ -32,6 +32,7 @@ import { Button } from "@/components/ui/button";
 import { NewOrientation } from "@/features/api/orientation";
 import { FormSchema } from "../validator";
 import { toast } from "@/hooks/use-toast";
+import { Alert } from "@/components/succes-modal";
 
 type DrawerProps = {
   open: boolean;
@@ -75,17 +76,32 @@ export default function NewResearchFormDrawer({ open, onClose }: DrawerProps) {
     },
   });
 
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [alertProps, setAlertProps] = useState({
+    title: "",
+    description: "",
+    type: "",
+  });
+
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
     console.log("Données du formulaire soumises:", data);
     try {
       const response = await NewOrientation(data);
-      console.log(response);
+      const responseData = await response.json();
+      console.log(responseData);
       toast({
         title: "Succès",
         description: "Votre formulaire a été soumis avec succès !",
         variant: "default",
       });
       form.reset();
+
+      setAlertProps({
+        title: "Succès",
+        description: `Domaine suggéré : ${responseData.Secteur_Activite}`,
+        type: "success",
+      });
+      setAlertOpen(true);
       onClose();
       setSecondDrawerOpen(false);
     } catch (error) {
@@ -731,6 +747,13 @@ export default function NewResearchFormDrawer({ open, onClose }: DrawerProps) {
           </Form>
         </DrawerContent>
       </Drawer>
+      <Alert
+        isOpen={alertOpen}
+        onClose={() => setAlertOpen(false)}
+        title={alertProps.title}
+        description={alertProps.description}
+        type={alertProps.type as "success" | "error"}
+      />
     </div>
   );
 }
